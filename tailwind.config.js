@@ -12,6 +12,11 @@ module.exports = {
         foreground: "var(--foreground)",
       },
     },
+    extend: {
+      fontFamily: {
+        poppins: ["var(--font-inter)"],
+      },
+    },
   },
   plugins: [],
 };
