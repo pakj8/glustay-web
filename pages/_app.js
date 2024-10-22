@@ -1,5 +1,8 @@
 import { Poppins } from "next/font/google";
 import "../styles/globals.css";
+import { ApolloProvider } from "@apollo/client";
+import client from "../services/graphql";
+import Navbar from "../components/navbar/Navbar";
 
 // Call the font loader at the module scope
 const poppins = Poppins({
@@ -10,8 +13,11 @@ const poppins = Poppins({
 
 export default function App({ Component, pageProps }) {
   return (
-    <main className={`${poppins.className}`}>
-      <Component {...pageProps} />
-    </main>
+    <ApolloProvider client={client}>
+      <main className={`${poppins.className}`}>
+        <Navbar />
+        <Component {...pageProps} />
+      </main>
+    </ApolloProvider>
   );
 }
