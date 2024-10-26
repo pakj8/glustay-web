@@ -12,3 +12,15 @@ export const useGetBookingDetailsByReservationId = (reservationId) => {
 
   return { data, loading, error, refetch };
 };
+
+export const useHomepageGetBookingDetailsByReservationId = (reservationId) => {
+  const { data, loading, error, refetch } = useQuery(
+    GET_BOOKING_DETAILS_BY_RESERVATIONID,
+    {
+      variables: { reservationId },
+      skip: !reservationId,
+    }
+  );
+
+  return { data, loading, error, refetch };
+};
