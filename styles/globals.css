@@ -23,3 +23,12 @@
 .animate-shake {
   animation: shake 0.5s;
 }
+
+.font-mulish {
+  font-family: Mulish, sans-serif !important;
+}
+
+/* .bg-ht-100 {
+  --tw-bg-opacity: 1;
+  background-color: rgb(255 231 0 / var(--tw-bg-opacity));
+} */

@@ -13,6 +13,11 @@ module.exports = {
       },
     },
     extend: {
+      backgroundColor: {
+        ht: {
+          100: "#ffe700",
+        },
+      },
       fontFamily: {
         poppins: ["var(--font-inter)"],
       },

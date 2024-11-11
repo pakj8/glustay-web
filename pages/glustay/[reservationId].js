@@ -6,10 +6,24 @@ import { useHomepageGetBookingDetailsByReservationId } from "../../graphql/Booki
 import GluStayHomeTop from "../../components/homepage/GluStayHomeTop";
 
 function Index() {
+  const router = useRouter();
+  const [details, setDetails] = useState(null);
+
+  const { data, error, loading, refetch } =
+    useHomepageGetBookingDetailsByReservationId(
+      router.query.reservationId ? router.query.reservationId : null
+    );
+
+  useEffect(() => {
+    if (data) {
+      setDetails(data?.getBookingDetailsByReservationId);
+    }
+  }, [data]);
+
   return (
     <>
       <div className=" mx-auto lg:grid place-items-center pt-9 pb-2 h-1 mt-5">
-        <div className="lg:w-[360px] px-5">
+        <div className="lg:w-[360px] px-5 pr-20">
           <Image
             src={TopHead}
             alt="tophead"
@@ -26,7 +40,7 @@ function Index() {
               <h2></h2>
             </div>
           </div> */}
-          <GluStayHomeTop />
+          <GluStayHomeTop details={details} />
         </div>
       </div>
     </>

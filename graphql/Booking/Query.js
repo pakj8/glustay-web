@@ -12,6 +12,10 @@ export const GET_BOOKING_DETAILS_BY_RESERVATIONID = gql`
       hotelId {
         _id
         hotelName
+        address
+        gmapurl
+        importantInfo
+        wifiPassword
       }
     }
   }
