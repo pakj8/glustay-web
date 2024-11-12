@@ -8,16 +8,14 @@ module.exports = {
   theme: {
     extend: {
       colors: {
-        background: "var(--background)",
-        foreground: "var(--foreground)",
-      },
-    },
-    extend: {
-      backgroundColor: {
+        // background: "var(--background)",
+        // foreground: "var(--foreground)",
         ht: {
           100: "#ffe700",
         },
       },
+    },
+    extend: {
       fontFamily: {
         poppins: ["var(--font-inter)"],
       },

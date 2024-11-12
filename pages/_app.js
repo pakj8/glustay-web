@@ -3,6 +3,8 @@ import "../styles/globals.css";
 import { ApolloProvider } from "@apollo/client";
 import client from "../services/graphql";
 import Navbar from "../components/navbar/Navbar";
+import { Provider } from "react-redux";
+import store from "../redux/store";
 
 // Call the font loader at the module scope
 const poppins = Poppins({
@@ -13,11 +15,13 @@ const poppins = Poppins({
 
 export default function App({ Component, pageProps }) {
   return (
-    <ApolloProvider client={client}>
-      <main className={`${poppins.className}`}>
-        <Navbar />
-        <Component {...pageProps} />
-      </main>
-    </ApolloProvider>
+    <Provider store={store}>
+      <ApolloProvider client={client}>
+        <main className={`${poppins.className}`}>
+          <Navbar />
+          <Component {...pageProps} />
+        </main>
+      </ApolloProvider>
+    </Provider>
   );
 }
