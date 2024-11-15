@@ -7,6 +7,7 @@ import GluStayHomeTop from "../../components/homepage/GluStayHomeTop";
 import DetailsComponent from "../../components/details/DetailsComponenet";
 import EventsAndServices from "../../components/activity/EventsAndServices";
 import Account from "../../components/MyAccount/Account";
+import Footer from "../../components/footer/Footer";
 
 function Index() {
   const router = useRouter();
@@ -37,10 +38,11 @@ function Index() {
         </div>
       </div>
       <div className="container mx-auto lg:w-[360px] mt-16">
-        <div className="mb-5 lg:w-[360px] ">
+        <div className=" lg:w-[360px] ">
           <GluStayHomeTop details={details} />
           <DetailsComponent details={details} />
           <EventsAndServices />
+          <Footer />
         </div>
       </div>
     </>

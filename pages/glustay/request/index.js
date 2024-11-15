@@ -214,7 +214,17 @@ function Index() {
           </div>
         </div>
       </div>
-      <div className="mt-4"></div>
+      <div className="mt-10">
+        {userRequestCategory?.map((category, index) => {
+          return (
+            <div key={index} className="border-t-[1px] border-black">
+              <p className="text-base bg-white text-black uppercase w-[130px] -mt-3">
+                {category}
+              </p>
+            </div>
+          );
+        })}
+      </div>
     </div>
   );
 }
