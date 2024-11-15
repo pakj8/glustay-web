@@ -115,7 +115,7 @@ function EventsAndServices() {
         </div>
         <div className="mt-5">
           <h1 className="text-xl font-poppins font-semibold">
-            That's it Folks !
+            That&apos;s it Folks !
           </h1>
         </div>
       </div>
