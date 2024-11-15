@@ -19,7 +19,7 @@ function GluStayHomeTop({ details }) {
   const formattedCheckinDate = formatDate(details?.checkinDate);
   const formattedCheckoutDate = formatDate(details?.checkOutDate);
   return (
-    <div className="container mx-auto lg:w-[360px] mt-16">
+    <div className="container mx-auto lg:w-[360px] mt-16 pr-5">
       <div className="flex flex-col gap-3 ml-5">
         <h2 className="font-mulish text-black text-2xl font-bold">
           Ohai {details?.firstName} {details?.lastName}
@@ -38,23 +38,27 @@ function GluStayHomeTop({ details }) {
               <span className="font-semibold ">{details?.reservationId}</span>
             </p>
           </div>
-        </div>
 
-        <div className="px-3 pb-3 grid grid-cols-9 shadow-2xl  ">
-          <div className="flex flex-col  col-span-4">
-            {" "}
-            <p className=" text-xs text-ht-91 font-medium">Check in{""}</p>
-            <span className="text-black font-bold font-mulish text-xs">
-              {formattedCheckinDate}
-            </span>
-          </div>
-          <div className=" h-1 col-span-1 mt-4 bg-ht-100"></div>
-          <div className="flex flex-col items-end  col-span-4">
-            {" "}
-            <p className=" text-xs text-ht-91 font-medium">Check out {""}</p>
-            <span className="text-black font-bold  text-xs">
-              {formattedCheckoutDate}
-            </span>
+          <div className="px-3 pb-3 grid grid-cols-9 ">
+            <div className="flex flex-col  col-span-4">
+              {" "}
+              <p className=" text-xs text-ht-91 font-light   text-gray-400">
+                Check in{""}
+              </p>
+              <span className="text-black font-bold font-mulish text-xs">
+                {formattedCheckinDate}
+              </span>
+            </div>
+            <div className=" h-1 col-span-1 mt-4 bg-ht-100"></div>
+            <div className="flex flex-col items-end  col-span-4">
+              {" "}
+              <p className=" text-xs text-ht-91 font-light   text-gray-400">
+                Check out {""}
+              </p>
+              <span className="text-black font-bold  text-xs">
+                {formattedCheckoutDate}
+              </span>
+            </div>
           </div>
         </div>
       </div>

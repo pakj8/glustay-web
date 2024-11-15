@@ -1,13 +1,13 @@
 import Image from "next/image";
 import React, { useState } from "react";
-import GluStayLogo from "../../public/assets/glustaylogo.svg";
+
 import Profile from "../../public/assets/gluiconprofile.svg";
 import Request from "../../public/assets/quote-request (1).png";
 import Food from "../../public/assets/add (1).png";
 import Booking from "../../public/assets/booking.png";
 import Support from "../../public/assets/support.png";
 
-function Navbar() {
+function Account() {
   const [isAccountOpen, setIsAccountOpen] = useState(false);
 
   const handleProfileClick = () => {
@@ -17,15 +17,6 @@ function Navbar() {
   return (
     <div className="fixed top-0 inset-x-0 z-10 bg-white shadow-md w-full">
       <div className="container mx-auto py-2 px-4 lg:max-w-[360px] flex items-center">
-        {/* Logo */}
-        <Image
-          src={GluStayLogo}
-          alt="GluStay Logo"
-          width={1000}
-          height={1000}
-          className="w-auto h-10 mr-auto"
-        />
-
         {/* Profile Icon */}
         <Image
           src={Profile}
@@ -97,37 +88,6 @@ function Navbar() {
                   </p>
                 </div>
               </div>
-
-              {/* <div className="flex flex-row gap-2">
-                <div className="bg-yellow-100 p-4 rounded-lg flex flex-col items-center">
-                  <Image
-                    src={Request}
-                    alt="My Requests"
-                    width={24}
-                    height={24}
-                  />
-                  <span className="mt-2">My Requests</span>
-                </div>
-                <div className="bg-yellow-100 p-4 rounded-lg flex flex-col items-center">
-                  <Image
-                    src={Booking}
-                    alt="My Bookings"
-                    width={24}
-                    height={24}
-                  />
-                </div>
-                <span className="mt-2">My Bookings</span>
-              </div>
-              <div className="flex flex-row gap-2 mt-4">
-                <div className="bg-yellow-100 p-4 rounded-lg flex flex-col items-center">
-                  <Image src={Food} alt="Food Orders" width={24} height={24} />
-                  <span className="mt-2">Food Orders</span>
-                </div>
-                <div className="bg-yellow-100 p-4 rounded-lg flex flex-col items-center">
-                  <Image src={Support} alt="Support" width={24} height={24} />
-                  <span className="mt-2">Support</span>
-                </div>
-              </div> */}
             </div>
           </div>
         )}
@@ -136,4 +96,4 @@ function Navbar() {
   );
 }
 
-export default Navbar;
+export default Account;

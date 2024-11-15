@@ -5,6 +5,7 @@ import client from "../services/graphql";
 import Navbar from "../components/navbar/Navbar";
 import { Provider } from "react-redux";
 import store from "../redux/store";
+import Footer from "../components/footer/Footer";
 
 // Call the font loader at the module scope
 const poppins = Poppins({
@@ -20,6 +21,7 @@ export default function App({ Component, pageProps }) {
         <main className={`${poppins.className}`}>
           <Navbar />
           <Component {...pageProps} />
+          <Footer />
         </main>
       </ApolloProvider>
     </Provider>
