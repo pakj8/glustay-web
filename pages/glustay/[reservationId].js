@@ -4,6 +4,9 @@ import Image from "next/image";
 import { useRouter } from "next/router";
 import { useHomepageGetBookingDetailsByReservationId } from "../../graphql/Booking/datasource";
 import GluStayHomeTop from "../../components/homepage/GluStayHomeTop";
+import DetailsComponent from "../../components/details/DetailsComponenet";
+import EventsAndServices from "../../components/activity/EventsAndServices";
+import Account from "../../components/MyAccount/Account";
 
 function Index() {
   const router = useRouter();
@@ -23,7 +26,7 @@ function Index() {
   return (
     <>
       <div className=" mx-auto lg:grid place-items-center pt-9 pb-2 h-1 mt-5">
-        <div className="lg:w-[360px] px-5 pr-20">
+        <div className="lg:w-[360px] px-5 pr-20  mr-30 ">
           <Image
             src={TopHead}
             alt="tophead"
@@ -35,12 +38,9 @@ function Index() {
       </div>
       <div className="container mx-auto lg:w-[360px] mt-16">
         <div className="mb-5 lg:w-[360px] ">
-          {/* <div className="container mx-auto px-5 mt-10">
-            <div className="flex flex-col gap-3">
-              <h2></h2>
-            </div>
-          </div> */}
           <GluStayHomeTop details={details} />
+          <DetailsComponent details={details} />
+          <EventsAndServices />
         </div>
       </div>
     </>
