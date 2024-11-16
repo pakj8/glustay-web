@@ -12,7 +12,9 @@ apolloLinks.push(
 
 const client = new ApolloClient({
   link: from(apolloLinks), // Update to your GraphQL server URI
-  cache: new InMemoryCache(),
+  cache: new InMemoryCache({
+    addTypename: false,
+  }),
 });
 
 export default client;
