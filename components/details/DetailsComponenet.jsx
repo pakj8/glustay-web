@@ -77,21 +77,21 @@ function DetailsComponent({ details }) {
     <div className="container mx-auto px-5 mt-7">
       <div className="glufeature grid grid-cols-3 gap-4">
         <section
-          className="bg-ht-100 py-1.5 rounded-lg cursor-pointer"
+          className="bg-ht-100 py-1.5 rounded-lg cursor-pointer bg-[#FFE700]"
           onClick={handleImportantInfoClick}
         >
-          <div className="flex flex-col gap-2 justify-center items-center">
+          <div className="flex flex-col gap-2 justify-center items-center ">
             <div className="rounded-full bg-white p-3">
               <Image src={File} alt="File" height={22} width={22} />
             </div>
-            <p className="text-xs font-medium font-poppins text-center">
+            <p className="text-xs font-medium font-poppins text-center ">
               Important info
             </p>
           </div>
         </section>
 
         <section
-          className="bg-ht-100 py-1.5 rounded-lg"
+          className="bg-ht-100 py-1.5 rounded-lg bg-[#FFE700]"
           onClick={handleLocationClick}
         >
           <div className="flex flex-col gap-2 justify-center items-center">
@@ -105,10 +105,10 @@ function DetailsComponent({ details }) {
         </section>
 
         <section
-          className="bg-ht-100 py-1.5 rounded-lg"
+          className="bg-ht-100 py-1.5 rounded-lg bg-[#FFE700] "
           onClick={handleWifiClick}
         >
-          <div className="flex flex-col gap-2 justify-center items-center">
+          <div className="flex flex-col gap-2 justify-center items-center ">
             <div className="rounded-full bg-white p-3">
               <Image src={Wifi} alt="Wifi" height={22} width={22} />
             </div>

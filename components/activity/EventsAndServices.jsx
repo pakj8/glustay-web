@@ -10,8 +10,14 @@ import Rentals from "../../public/assets/Rentalstransfers.webp";
 import Merchandise from "../../public/assets/Merchandise.webp";
 import RaiseComp from "../../public/assets/raisecomplaint.svg";
 import Events from "../../public/assets/events.png";
+// import { useRouter } from "next/router";
 
 function EventsAndServices() {
+  // const router = useRouter();
+  // const navigateTo = (path) => {
+  //   router.push(path);
+  // };
+
   return (
     <div className="container mx-auto px-5 mt-12">
       <div className="flex flex-col gap-1">
@@ -37,6 +43,7 @@ function EventsAndServices() {
         <div className="grid grid-cols-2 gap-3 mt-4">
           <div className="flex flex-col gap-3">
             <Image
+              // onClick={() => navigateTo("/form")}
               src={Checkin}
               alt="tophead"
               width={1000}
