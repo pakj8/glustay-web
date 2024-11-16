@@ -32,7 +32,7 @@ function GluStayHomeTop({ details }) {
           </span>
         </p>
         <div className=" flex flex-col gap-3 rounded-md shadow-md">
-          <div className="flex items-center bg-ht-100 py-3 px-3 rounded-t-lg">
+          <div className="flex items-center bg-ht-100 py-3 px-3 rounded-t-lg bg-[#FFE700]">
             <p className="font-poppins font-medium text-xs ">
               Reservation ID:{" "}
               <span className="font-semibold ">{details?.reservationId}</span>
