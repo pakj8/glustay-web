@@ -10,13 +10,11 @@ import Rentals from "../../public/assets/Rentalstransfers.webp";
 import Merchandise from "../../public/assets/Merchandise.webp";
 import RaiseComp from "../../public/assets/raisecomplaint.svg";
 import Events from "../../public/assets/events.png";
+import { useRouter } from "next/router";
 // import { useRouter } from "next/router";
 
-function EventsAndServices() {
-  // const router = useRouter();
-  // const navigateTo = (path) => {
-  //   router.push(path);
-  // };
+function EventsAndServices({ details }) {
+  const router = useRouter();
 
   return (
     <div className="container mx-auto px-5 mt-12">
@@ -43,7 +41,11 @@ function EventsAndServices() {
         <div className="grid grid-cols-2 gap-3 mt-4">
           <div className="flex flex-col gap-3">
             <Image
-              // onClick={() => navigateTo("/form")}
+              onClick={() =>
+                router?.push(
+                  `/glustay/webcheckin/form/${details?.reservationId}`
+                )
+              }
               src={Checkin}
               alt="tophead"
               width={1000}
@@ -52,6 +54,11 @@ function EventsAndServices() {
               className="w-full h-full rounded-lg cursor-pointer"
             />
             <Image
+              onClick={() => {
+                router?.push(
+                  `/glustay/request?reservationId=${details?.reservationId}&hotelId=${details?.hotelId?._id}`
+                );
+              }}
               src={Request}
               alt="tophead"
               width={1000}

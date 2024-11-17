@@ -4,10 +4,13 @@ import { useGetRequestBookingByObjectId } from "../../../graphql/RequestBooking/
 import CheckMark from "../../../public/assets/check-mark.png";
 import Check from "../../../public/assets/check.png";
 import Image from "next/image";
+import { useDispatch } from "react-redux";
+import { clearState } from "../../../redux/request/requestSlice";
 
 function Index() {
   const router = useRouter();
   const [bookingData, setBookingData] = useState(null);
+  const dispatch = useDispatch();
 
   const { data } = useGetRequestBookingByObjectId(router?.query?.bookingId);
 
@@ -16,6 +19,10 @@ function Index() {
       setBookingData(data?.getRequestBookingByObjectId);
     }
   }, [data]);
+
+  useEffect(() => {
+    dispatch(clearState());
+  }, [dispatch]);
 
   return (
     <div className="container mx-auto px-5 mt-20 lg:w-[360px]">

@@ -30,9 +30,18 @@ const requestSlice = createSlice({
         request.message = message;
       }
     },
+    clearState: (state) => {
+      state.selectedRequests = [];
+      state.hotelId = "";
+    },
   },
 });
 
-export const { addRequest, removeRequest, updateReqMessage, updateHotelId } =
-  requestSlice.actions;
+export const {
+  addRequest,
+  removeRequest,
+  updateReqMessage,
+  updateHotelId,
+  clearState,
+} = requestSlice.actions;
 export default requestSlice.reducer;

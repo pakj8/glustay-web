@@ -119,6 +119,14 @@ function Index() {
     }
   }, [userRequest?.selectedRequests?.length]);
 
+  useEffect(() => {
+    if (bookingData?.createRequestBooking) {
+      router?.push(
+        `/glustay/request/${bookingData?.createRequestBooking?._id}`
+      );
+    }
+  }, [bookingData?.createRequestBooking, router]);
+
   return reviewRequest === false ? (
     <div className="container mx-auto px-5 mt-20 lg:w-[360px]">
       <div className="grid grid-cols-10">
@@ -286,10 +294,10 @@ function Index() {
             </div>
           </div>
         </div>
-        <div className="mt-10">
+        <div className="">
           {userRequestCategory?.map((category, index) => {
             return (
-              <div key={index} className="border-t-[1px] border-black">
+              <div key={index} className="border-t-[1px] border-black mt-10">
                 <p className="text-base bg-white text-black uppercase w-[130px] -mt-3">
                   {category}
                 </p>
@@ -343,11 +351,6 @@ function Index() {
               userRequest?.hotelId,
               userRequest?.selectedRequests
             );
-            if (bookingData?.createRequestBooking) {
-              router?.push(
-                `/glustay/request/${bookingData?.createRequestBooking?._id}`
-              );
-            }
           }}
           className="fixed bottom-10 rounded-lg py-3 w-[350px] font-semibold text-lg disabled:bg-gray-400 bg-[#ffe700]"
         >

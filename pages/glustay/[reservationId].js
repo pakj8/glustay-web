@@ -41,7 +41,7 @@ function Index() {
         <div className=" lg:w-[360px] ">
           <GluStayHomeTop details={details} />
           <DetailsComponent details={details} />
-          <EventsAndServices />
+          <EventsAndServices details={details} />
           <Footer />
         </div>
       </div>
