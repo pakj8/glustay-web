@@ -56,3 +56,13 @@
   animation-timeline: auto;
   animation-range-start: normal;
 }
+
+.bg-ht-100 {
+  --tw-bg-opacity: 1;
+  background-color: rgb(255 231 0 / var(--tw-bg-opacity, 1));
+}
+
+.border-ht-100 {
+  --tw-border-opacity: 1;
+  border-color: rgb(255 231 0 / var(--tw-border-opacity, 1));
+}
