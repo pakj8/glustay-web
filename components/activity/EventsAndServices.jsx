@@ -43,7 +43,7 @@ function EventsAndServices({ details }) {
             <Image
               onClick={() =>
                 router?.push(
-                  `/glustay/webcheckin/form/${details?.reservationId}`
+                  `/glustay/webcheckin/guest/${details?.reservationId}`
                 )
               }
               src={Checkin}

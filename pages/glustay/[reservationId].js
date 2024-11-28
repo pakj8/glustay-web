@@ -8,6 +8,7 @@ import DetailsComponent from "../../components/details/DetailsComponenet";
 import EventsAndServices from "../../components/activity/EventsAndServices";
 import Account from "../../components/MyAccount/Account";
 import Footer from "../../components/footer/Footer";
+import RouterLoader from "../../components/loader/RouterLoader";
 
 function Index() {
   const router = useRouter();
@@ -24,7 +25,9 @@ function Index() {
     }
   }, [data]);
 
-  return (
+  return loading ? (
+    <RouterLoader />
+  ) : (
     <>
       <div className=" mx-auto lg:grid place-items-center pt-9 pb-2 h-1 mt-5">
         <div className="lg:w-[360px] px-5 pr-20  mr-30 ">
