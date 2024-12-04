@@ -6,9 +6,11 @@ import Request from "../../public/assets/quote-request (1).png";
 import Food from "../../public/assets/add (1).png";
 import Booking from "../../public/assets/booking.png";
 import Support from "../../public/assets/support.png";
+import { useRouter } from "next/router";
 
 function Navbar() {
   const [isAccountOpen, setIsAccountOpen] = useState(false);
+  const router = useRouter();
 
   const handleProfileClick = () => {
     setIsAccountOpen(!isAccountOpen);
@@ -19,6 +21,9 @@ function Navbar() {
       <div className="container mx-auto py-2 px-4 lg:max-w-[360px] flex items-center">
         {/* Logo */}
         <Image
+          onClick={() =>
+            router?.push(`/glustay/${sessionStorage?.getItem("reservationId")}`)
+          }
           src={GluStayLogo}
           alt="GluStay Logo"
           width={1000}
@@ -48,7 +53,17 @@ function Navbar() {
               </button>
               <h2 className="text-xl font-bold mb-6">My Account</h2>
               <div className="grid grid-cols-3 justify-evenly mt-5">
-                <div className="flex flex-col gap-2 justify-center items-center p-2">
+                <div
+                  onClick={() => {
+                    router?.push(
+                      `/glustay/profile/request?reservationId=${sessionStorage?.getItem(
+                        "reservationId"
+                      )}`
+                    );
+                    setIsAccountOpen(false);
+                  }}
+                  className="flex cursor-pointer flex-col gap-2 justify-center items-center p-2"
+                >
                   <Image
                     src={Request}
                     alt="My Requests"

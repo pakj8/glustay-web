@@ -83,6 +83,11 @@ function EventsAndServices({ details }) {
               className="w-full h-full rounded-lg cursor-pointer"
             />
             <Image
+              onClick={() => {
+                router?.push(
+                  `/glustay/webcheckout/${details?.reservationId}?hotelId=${details?.hotelId?._id}`
+                );
+              }}
               src={Checkout}
               alt="tophead"
               width={1000}
@@ -101,6 +106,11 @@ function EventsAndServices({ details }) {
               className="w-full h-full rounded-lg cursor-pointer"
             />
             <Image
+              onClick={() => {
+                router?.push(
+                  `/glustay/raisecomplaint/${details?.reservationId}?hotelId=${details?.hotelId?._id}`
+                );
+              }}
               src={RaiseComp}
               alt="tophead"
               width={1000}

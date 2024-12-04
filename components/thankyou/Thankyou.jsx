@@ -3,7 +3,7 @@ import Image from "next/image";
 import ThankYou from "../../public/assets/Thankyou.svg";
 import { useRouter } from "next/router";
 
-function Thankyou({ reservationId }) {
+function Thankyou({ reservationId, text }) {
   const router = useRouter();
   return (
     <div className="container mx-auto mt-20 flex flex-col p-5 items-center">
@@ -20,7 +20,8 @@ function Thankyou({ reservationId }) {
       <div className="text-center my-4">
         {" "}
         <p className="text-base font-semibold font-Mulish">
-          Thank you for staying with us!
+          {text}
+          {/* Thank you for your response! */}
         </p>
       </div>
       <button

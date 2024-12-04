@@ -66,3 +66,6 @@
   --tw-border-opacity: 1;
   border-color: rgb(255 231 0 / var(--tw-border-opacity, 1));
 }
+svg.star-svg {
+  display: inline;
+}

@@ -1,6 +1,9 @@
 import { useMutation, useQuery } from "@apollo/client";
 import { CREATE_REQUEST_BOOKING } from "./Mutation";
-import { GET_REQUEST_BOOKING_BY_OBJECTID } from "./Query";
+import {
+  GET_REQUEST_BOOKING_BY_OBJECTID,
+  GET_REQUEST_BOOKING_BY_RESERVATIONID,
+} from "./Query";
 
 export const useCreateRequestBooking = () => {
   const [reqBooking, { data, loading, error, refetch }] = useMutation(
@@ -34,4 +37,16 @@ export const useGetRequestBookingByObjectId = (ObjectId) => {
   );
 
   return { data, loading, refetch, error };
+};
+
+export const useGetRequestBookingByReservationId = (reservationId) => {
+  const { data, loading, error, refetch } = useQuery(
+    GET_REQUEST_BOOKING_BY_RESERVATIONID,
+    {
+      variables: { reservationId },
+      skip: !reservationId,
+    }
+  );
+
+  return { data, loading, error, refetch };
 };

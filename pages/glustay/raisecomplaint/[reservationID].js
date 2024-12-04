@@ -1,18 +1,45 @@
+import { useRouter } from "next/router";
 import React, { useState } from "react";
+import { useCreateRaiseComplaint } from "../../../graphql/raisecomplaint/datasource";
+import Thankyou from "../../../components/thankyou/Thankyou";
 
 function Index() {
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
   const [subject, setSubject] = useState("");
   const [complaint, setComplaint] = useState("");
+  const router = useRouter();
+
+  const [createComplaintHandler, { data, loading, error, refetch }] =
+    useCreateRaiseComplaint();
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    // Handle form submission logic here, like sending the data to a backend
-    console.log("Complaint Raised", { name, email, subject, complaint });
+
+    try {
+      if (name && email && subject && complaint) {
+        const ComplaintInput = {
+          fullName: name,
+          email: email,
+          subject: subject,
+          complaint: complaint,
+          reservationId: router?.query?.reservationID,
+          hotelId: router?.query?.hotelId,
+        };
+        const data = createComplaintHandler(ComplaintInput);
+        return data;
+      }
+    } catch (error) {
+      console.error(error);
+    }
   };
 
-  return (
+  return data?.createRaiseComplaint ? (
+    <Thankyou
+      reservationId={router?.query?.reservationID}
+      text="Thank you for your response!"
+    />
+  ) : (
     <div className="container mx-auto mt-20 flex flex-col p-5 items-center">
       <h2 className="text-2xl font-semibold mb-4">Raise a Complaint</h2>
       <form

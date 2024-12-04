@@ -25,6 +25,12 @@ function Index() {
     }
   }, [data]);
 
+  useEffect(() => {
+    if (router?.query?.reservationId) {
+      sessionStorage?.setItem("reservationId", router?.query?.reservationId);
+    }
+  }, [router]);
+
   return loading ? (
     <RouterLoader />
   ) : (

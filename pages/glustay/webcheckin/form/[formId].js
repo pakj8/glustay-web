@@ -88,7 +88,10 @@ function Index() {
   };
 
   return webcheckinData?.createWebCheckInData ? (
-    <Thankyou reservationId={router?.query?.formId} />
+    <Thankyou
+      reservationId={router?.query?.formId}
+      text="Thank you for your response!"
+    />
   ) : (
     <div className="container mx-auto  mt-20 flex flex-col p-5 items-center">
       <div className="flex flex-col gap-3">
