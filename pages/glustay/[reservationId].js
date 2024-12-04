@@ -7,7 +7,9 @@ import GluStayHomeTop from "../../components/homepage/GluStayHomeTop";
 import DetailsComponent from "../../components/details/DetailsComponenet";
 import EventsAndServices from "../../components/activity/EventsAndServices";
 import Account from "../../components/MyAccount/Account";
-import Footer from "../../components/footer/Footer";
+import dynamic from "next/dynamic";
+// import Footer from "../../components/footer/Footer";
+const Footer = dynamic(() => import("../../components/footer/Footer"));
 import RouterLoader from "../../components/loader/RouterLoader";
 
 function Index() {
