@@ -156,100 +156,17 @@ function Index() {
           </div>
         </div>
       </div>
-      <div className="mt-4">
+      <div className="mt-4 mb-24 flex flex-col gap-2">
         {categories?.map((category, index) => {
           return (
-            <div
+            <RequestAccordion
+              userRequest={userRequest}
               key={index}
-              className="border border-gray-200 shadow-lg rounded-lg py-3 block mt-4"
-            >
-              <button
-                onClick={toggleAccordion}
-                className="flex justify-between border-[#ffe700] items-center w-full text-blue-gray-700 antialiased select-none hover:text-blue-gray-900 transition-colors text-base font-extrabold font-mulish border-l-4 border-ht-100 border-b-0 px-2 py-1"
-              >
-                <h2 className="text-lg font-semibold">{category}</h2>
-                <svg
-                  xmlns="http://www.w3.org/2000/svg"
-                  fill="none"
-                  viewBox="0 0 24 24"
-                  strokeWidth={2}
-                  stroke="currentColor"
-                  className={`w-5 h-5 transform transition-transform duration-300 ${
-                    isOpen ? "rotate-180" : ""
-                  }`}
-                >
-                  <path
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
-                    d="M19 9l-7 7-7-7"
-                  />
-                </svg>
-              </button>
-
-              <div
-                className={`overflow-hidden transition-[max-height] duration-300 ${
-                  isOpen ? "max-h-[1000px]" : "max-h-0"
-                }`}
-              >
-                {request
-                  ?.filter((fil) => fil?.category === category)
-                  ?.map((req, index) => {
-                    const isAdded = userRequest?.selectedRequests?.some(
-                      (storedReq) => storedReq._id === req._id
-                    );
-
-                    return (
-                      <div
-                        key={index}
-                        className="flex flex-col gap-3 my-2.5 py-2.5 "
-                      >
-                        <div className="px-2">
-                          <div className="flex gap-2 items-center">
-                            <div
-                              className={`${
-                                isAdded ? "bg-[#ffe700]" : "bg-gray-200"
-                              }   p-3 rounded-md`}
-                            >
-                              <div className="h-10 w-10">
-                                <Image
-                                  src={req?.image}
-                                  alt={req?.requestTitle}
-                                  width={100}
-                                  height={100}
-                                  className="rounded-md"
-                                  loading="lazy"
-                                />
-                              </div>
-                            </div>
-                            <div className="flex flex-col gap-0.5">
-                              <h3 className="font-mulish font-bold">
-                                {req?.requestTitle}
-                              </h3>
-                              <p className="text-[0.6rem] font-semibold text-[#939393] font-mulish">
-                                {req?.description}
-                              </p>
-                            </div>
-                            <button
-                              onClick={() => {
-                                if (isAdded) {
-                                  dispatch(removeRequest(req?._id));
-                                } else {
-                                  dispatch(addRequest(req));
-                                }
-                              }}
-                              className={`cursor-pointer py-1.5 text-sm w-20 md:px-4 font-poppins ${
-                                isAdded ? "bg-[#ffe700]" : "bg-gray-200"
-                              }  rounded-md font-semibold ml-auto`}
-                            >
-                              {isAdded ? "Added" : "Add"}
-                            </button>
-                          </div>
-                        </div>
-                      </div>
-                    );
-                  })}
-              </div>
-            </div>
+              category={category}
+              data={request}
+              dispatch={dispatch}
+              addRequest={addRequest}
+            />
           );
         })}
       </div>
