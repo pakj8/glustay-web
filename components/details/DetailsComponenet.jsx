@@ -37,39 +37,7 @@ function DetailsComponent({ details }) {
   };
 
   const importantInfoContent = (
-    <ul className="list-disc list-inside ">
-      <li className="pb-3">
-        The Hosteller Bhandardara is family-friendly till 30 November 2024.
-        Note: Guests below 18 are not allowed in dorm rooms.
-      </li>
-      <li className="pb-3">Guests with local IDs are allowed.</li>
-      <li>
-        Visitor timings: 9 AM to 9 PM. Visitors are not allowed in rooms and
-        must stay in common areas.
-      </li>
-      <li className="pb-3">
-        Drug/alcohol abuse is strictly prohibited; violators will be blacklisted
-        and asked to vacate immediately.
-      </li>
-      <li className="pb-3">
-        Dedicated smoking areas are available. Smoking in dorms is prohibited.
-      </li>
-      <li className="pb-3">
-        Accommodation in the same dorm is not guaranteed for groups of 3-4, and
-        room allocation is based on availability.
-      </li>
-      <li className="pb-3">
-        Unbox Cafe serves vegetarian food and promotes self-service.
-      </li>
-      <li className="pb-3">Outside food is prohibited inside the hostel.</li>
-      <li className="pb-3">Timings:</li>
-      <p>Check-in: 2 PM</p>
-      <p>Check-out: 11 AM</p>
-      <p>Guest visits: 9 AM - 9 PM</p>
-      <p> Cafe: 8 AM - 3 PM & 6 PM - 12 AM</p>
-      <p>Reception: 24 Hours</p>
-      <p>Common Area: 24 Hours.</p>
-    </ul>
+    <div>Basic important information about the hotel.</div>
   );
 
   const passwordInfo = <p></p>;

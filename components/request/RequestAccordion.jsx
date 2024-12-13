@@ -51,7 +51,7 @@ function RequestAccordion({
       >
         {category}
       </AccordionHeader>
-      <AccordionBody className="px-3">
+      <AccordionBody className="px-3 overflow-hidden">
         <div className="flex flex-col gap-3">
           {data
             ?.filter((fil) => fil?.category === category)
