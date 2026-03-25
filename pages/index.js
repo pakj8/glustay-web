@@ -1,9 +1,13 @@
 import Image from "next/image";
 import Background from "../public/assets/background.png";
 import Button from "../public/assets/button.png";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { useRouter } from "next/router";
-import { useGetBookingDetailsByReservationId } from "../graphql/Booking/datasource";
+import {
+  useGetBookingDetailsByReservationId,
+  useSendOtp,
+  useVerifyOtp,
+} from "../graphql/Booking/datasource";
 
 export default function Home() {
   const [reservationId, setReservationId] = useState("");
@@ -12,10 +16,27 @@ export default function Home() {
   const router = useRouter();
   const [showPage, setShowPage] = useState("Main");
   const [userData, setUserData] = useState();
+  const [otp, setOtp] = useState("");
 
   const { refetch } = useGetBookingDetailsByReservationId(
     reservationId?.toUpperCase()
   );
+  const [sendOtpHandler, { data, loading }] = useSendOtp();
+  const [
+    verifyOtpHandler,
+    {
+      data: verifyOtpData,
+      loading: verifyOtpLoading,
+      error: verifyOtpErr,
+      refetch: verifyOtpRefetch,
+    },
+  ] = useVerifyOtp();
+
+  useEffect(() => {
+    if (data?.sendOtp?.success === true) {
+      setShowPage("OTP");
+    }
+  }, [data?.sendOtp?.success]);
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -50,6 +71,15 @@ export default function Home() {
     setShake(true); // Add shake effect
     setTimeout(() => setShake(false), 500); // Remove shake effect after 500ms
   };
+
+  useEffect(() => {
+    if (verifyOtpData?.verifyOTP?.success === true) {
+      localStorage.setItem("authentication", "verified");
+      router.push(`/glustay/${userData?.reservationId}`);
+    } else if (verifyOtpData?.verifyOTP?.success === false) {
+      triggerShake();
+    }
+  }, [verifyOtpData, router, userData?.reservationId]);
 
   return (
     <div className="container mx-auto flex justify-center items-center h-screen">
@@ -106,7 +136,7 @@ export default function Home() {
               </button>
             </div>
           </form>
-        ) : (
+        ) : showPage === "Confirm" ? (
           <div className="absolute top-40 left-5 font-poppins text-3xl leading-normal">
             <p>
               Are you <br />
@@ -116,18 +146,69 @@ export default function Home() {
             </p>
             <div className="space-y-8 mt-8">
               <button
-                onClick={() =>
-                  router.push(`/glustay/${userData?.reservationId}`)
-                }
-                className="w-72 flex justify-center items-center font-poppins text-base font-medium border border-[#FFE700] h-14 rounded-md hover:bg-[#FFE700] text-[#000000]"
+                disabled={loading}
+                // onClick={() =>
+                //   router.push(`/glustay/${userData?.reservationId}`)
+                // }
+                onClick={() => {
+                  const isVerified = localStorage.getItem("authentication");
+                  if (isVerified === "verified") {
+                    router.push(`/glustay/${userData?.reservationId}`);
+                  } else {
+                    sendOtpHandler(userData?.email);
+                  }
+                }}
+                className="w-72 flex disabled:bg-gray-400 justify-center items-center font-poppins text-base font-medium disabled:border-gray-300 border border-[#FFE700] h-14 rounded-md hover:bg-[#FFE700] text-[#000000]"
               >
-                Yes
+                {loading ? "Loading..." : "Yes"}
               </button>
+              {!loading && (
+                <button
+                  onClick={() => setShowPage("Main")}
+                  className="w-72 flex justify-center items-center font-poppins text-base font-medium border border-[#FFE700] h-14 rounded-md hover:bg-[#FFE700] text-[#000000]"
+                >
+                  No
+                </button>
+              )}
+            </div>
+          </div>
+        ) : (
+          <div className="absolute top-80 left-5">
+            <div className="flex flex-col ">
+              <p className="font-poppins leading-normal font-semibold">
+                A 6-digit verification code has been sent to your email address.
+                Please enter it below to continue.
+              </p>
+              <input
+                maxLength={6}
+                value={otp}
+                onChange={(e) => setOtp(e.target.value)}
+                type="text"
+                required
+                className={`mt-4 p-2 rounded-md font-semibold font-poppins w-[320px] uppercase text-[#121212] border outline-none ${
+                  verifyOtpData?.verifyOTP?.success === false
+                    ? "border-red-500 border-2 animate-shake"
+                    : "border-yellow-400"
+                }`}
+                placeholder="Enter OTP"
+              />
+              {verifyOtpData?.verifyOTP?.success !== true && (
+                <p className="text-red-500 font-semibold text-sm mt-2 animate-shake">
+                  {verifyOtpData?.verifyOTP?.message}
+                </p>
+              )}
+
               <button
-                onClick={() => setShowPage("Main")}
-                className="w-72 flex justify-center items-center font-poppins text-base font-medium border border-[#FFE700] h-14 rounded-md hover:bg-[#FFE700] text-[#000000]"
+                disabled={otp?.length !== 6}
+                onClick={async (e) => {
+                  if (otp !== "" && userData?.email) {
+                    e?.preventDefault();
+                    await verifyOtpHandler(userData?.email, otp);
+                  }
+                }}
+                className="w-[320px] mt-3 flex justify-center items-center font-semibold font-poppins text-base h-14 disabled:bg-gray-300 disabled:text-black rounded-md text-white bg-black"
               >
-                No
+                Verify
               </button>
             </div>
           </div>

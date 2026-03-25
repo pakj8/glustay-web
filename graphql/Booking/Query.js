@@ -6,6 +6,7 @@ export const GET_BOOKING_DETAILS_BY_RESERVATIONID = gql`
       _id
       firstName
       lastName
+      email
       reservationId
       checkinDate
       checkOutDate

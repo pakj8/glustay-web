@@ -1,7 +1,7 @@
 import React from "react";
 
 function Footer() {
-  const year = new Date().getFullYear;
+  const year = new Date().getFullYear();
 
   return (
     <div className="mr-auto text-center bg-black py-1 mt-5">
@@ -10,7 +10,7 @@ function Footer() {
       </p>
       <p className="font-poppins lg:font-normal font-light lg:text-lg text-xs text-white">
         {" "}
-        © 2024 All Rights Reserved
+        © {year} All Rights Reserved
       </p>
     </div>
   );
