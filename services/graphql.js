@@ -6,6 +6,9 @@ const apolloLinks = [];
 
 // apolloLinks.push(createUploadLink({ uri: 'http://localhost:4000/graphql' }))
 apolloLinks.push(createUploadLink({ uri: "http://localhost:4000/graphql" }));
+// apolloLinks.push(
+//   createUploadLink({ uri: "http://192.168.1.249:4000/graphql" })
+// );
 
 const client = new ApolloClient({
   link: from(apolloLinks), // Update to your GraphQL server URI
