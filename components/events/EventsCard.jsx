@@ -10,7 +10,7 @@ function EventsCard({ event }) {
     <div
       onClick={() => {
         router?.push(
-          `/glustay/events/event?hotelId=${event?.hotelId?._id}?eventId=${event?._id}`
+          `/glustay/events/${event?._id}?hotelId=${event?.hotelId?._id}&reservationId=${router?.query?.reservationId}&bookingId=${router?.query?.bookingId}`
         );
       }}
       className="p-3 border w-full rounded-lg  transition-all duration-300 ease-in-out hover:scale-105 hover:shadow-sm hover:shadow-[#ffe700]"
@@ -66,7 +66,9 @@ function EventsCard({ event }) {
 
               <div className="bg-[#ffe700] py-0.5 px-2 w-fit rounded-md ml-auto">
                 <p className="text-xs font-semibold">
-                  ${event?.pricePerPerson}/Person
+                  {event?.pricePerPerson === "Free"
+                    ? "Free"
+                    : `$${event?.pricePerPerson}/Person`}
                 </p>
               </div>
             </div>

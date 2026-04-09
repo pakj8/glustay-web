@@ -11,10 +11,12 @@ import dynamic from "next/dynamic";
 // import Footer from "../../components/footer/Footer";
 const Footer = dynamic(() => import("../../components/footer/Footer"));
 import RouterLoader from "../../components/loader/RouterLoader";
+import GluChat from "../../components/ai/GluChat";
 
 function Index() {
   const router = useRouter();
   const [details, setDetails] = useState(null);
+  console.log(details);
 
   const { data, error, loading, refetch } =
     useHomepageGetBookingDetailsByReservationId(
@@ -56,6 +58,13 @@ function Index() {
           <Footer />
         </div>
       </div>
+      <GluChat
+        guestName={`${details?.firstName} ${details?.lastName}`}
+        hotelName={details?.hotelId?.hotelName}
+        reservationId={details?.reservationId}
+        hotelAddress={details?.hotelId?.address}
+        wifiPassword={details?.hotelId?.wifiPassword}
+      />
     </>
   );
 }

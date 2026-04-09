@@ -122,7 +122,7 @@ function EventsAndServices({ details }) {
             <Image
               onClick={() => {
                 router?.push(
-                  `/glustay/events/${details?.hotelId?._id}?reservationId=${details?.reservationId}`
+                  `/glustay/events?hotelId=${details?.hotelId?._id}&reservationId=${details?.reservationId}&bookingId=${details?._id}`
                 );
               }}
               src={Events}

@@ -4,7 +4,11 @@ import createUploadLink from "apollo-upload-client/createUploadLink.mjs";
 
 const apolloLinks = [];
 
-// apolloLinks.push(createUploadLink({ uri: 'http://localhost:4000/graphql' }))
+// apolloLinks.push(
+//   createUploadLink({
+//     uri: "https://glustay-api-production-1778.up.railway.app/graphql",
+//   })
+// );
 apolloLinks.push(createUploadLink({ uri: "http://localhost:4000/graphql" }));
 // apolloLinks.push(
 //   createUploadLink({ uri: "http://192.168.1.249:4000/graphql" })

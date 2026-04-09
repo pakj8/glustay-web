@@ -147,17 +147,17 @@ export default function Home() {
             <div className="space-y-8 mt-8">
               <button
                 disabled={loading}
-                onClick={() =>
-                  router.push(`/glustay/${userData?.reservationId}`)
-                }
-                // onClick={() => {
-                //   const isVerified = localStorage.getItem("authentication");
-                //   if (isVerified === "verified") {
-                //     router.push(`/glustay/${userData?.reservationId}`);
-                //   } else {
-                //     sendOtpHandler(userData?.email);
-                //   }
-                // }}
+                // onClick={() =>
+                //   router.push(`/glustay/${userData?.reservationId}`)
+                // }
+                onClick={() => {
+                  const isVerified = localStorage.getItem("authentication");
+                  if (isVerified === "verified") {
+                    router.push(`/glustay/${userData?.reservationId}`);
+                  } else {
+                    sendOtpHandler(userData?.email);
+                  }
+                }}
                 className="w-72 flex disabled:bg-gray-400 justify-center items-center font-poppins text-base font-medium disabled:border-gray-300 border border-[#FFE700] h-14 rounded-md hover:bg-[#FFE700] text-[#000000]"
               >
                 {loading ? "Loading..." : "Yes"}

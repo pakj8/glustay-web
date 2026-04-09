@@ -7,7 +7,7 @@ export const useGetBookingDetailsByReservationId = (reservationId) => {
     GET_BOOKING_DETAILS_BY_RESERVATIONID,
     {
       variables: { reservationId },
-      skip: true,
+      skip: !reservationId,
     }
   );
 
