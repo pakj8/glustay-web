@@ -8,6 +8,7 @@ import EventCounter from "../../../components/events/eventsdetails/EventCounter"
 import Footer from "../../../components/footer/Footer";
 import { useCreateEventBooking } from "../../../graphql/eventbooking/datasource";
 import { useGetBookingDetailsByReservationId } from "../../../graphql/Booking/datasource";
+import { useGetEventCount } from "../../../graphql/events/datasource";
 
 function Index() {
   const router = useRouter();
@@ -15,7 +16,9 @@ function Index() {
   const [bookingDetails, setBookingDetails] = useState(null);
   const [noOfPerson, setNoOfPerson] = useState(0);
 
-  const { data } = useGetEventByEventId(router?.query?.eventId);
+  const { data, refetch: getEventRefetch } = useGetEventByEventId(
+    router?.query?.eventId
+  );
   const { data: bookingDetailsData } = useGetBookingDetailsByReservationId(
     router?.query?.reservationId
   );
@@ -24,11 +27,16 @@ function Index() {
     { data: createBookingData, loading, error, refetch },
   ] = useCreateEventBooking();
 
+  const { data: eventCount, refetch: getEventCount } = useGetEventCount(
+    router?.query?.eventId
+  );
+
   useEffect(() => {
     if (data?.getEventsById) {
       setEventDetails(data?.getEventsById);
+      getEventCount();
     }
-  }, [data]);
+  }, [data, getEventCount]);
 
   useEffect(() => {
     if (bookingDetailsData) {
@@ -80,10 +88,16 @@ function Index() {
             price={eventDetails?.pricePerPerson}
             tags={eventDetails?.tags}
           />
-          <EventDescription description={eventDetails?.description} />
+          <EventDescription
+            description={eventDetails?.description}
+            spots={parseInt(eventDetails?.noOfSpots)}
+            eventCount={eventCount}
+          />
           <EventCounter
             handleBookingEvent={handleBookingEvent}
             setNoOfPerson={setNoOfPerson}
+            spots={eventDetails?.noOfSpots}
+            eventCount={eventCount}
           />
         </div>
       </div>

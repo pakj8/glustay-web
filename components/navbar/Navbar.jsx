@@ -77,6 +77,14 @@ function Navbar() {
                 </div>
                 <div className="flex flex-col gap-2 justify-center items-center p-2">
                   <Image
+                    onClick={() => {
+                      router?.push(
+                        `/glustay/profile/events?reservationId=${sessionStorage?.getItem(
+                          "reservationId"
+                        )}`
+                      );
+                      setIsAccountOpen(false);
+                    }}
                     src={Booking}
                     alt="My Requests"
                     width={80}
@@ -84,7 +92,7 @@ function Navbar() {
                     className="bg-yellow-100 p-4 rounded-lg flex flex-col items-center "
                   />
                   <p className="font-poppins font-medium text-center text-sm">
-                    My Booking
+                    My Events
                   </p>
                 </div>
                 <div className="flex flex-col gap-2 justify-center items-center p-2">

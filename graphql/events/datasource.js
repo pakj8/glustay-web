@@ -1,5 +1,10 @@
 import { useQuery } from "@apollo/client";
-import { GET_EVENT_DETAILS_BY_EVENTID, GET_EVENTS_BY_HOTELID } from "./Query";
+import {
+  GET_EVENT_BOOKING_BY_RESERVATIONID,
+  GET_EVENT_BOOKING_COUNT,
+  GET_EVENT_DETAILS_BY_EVENTID,
+  GET_EVENTS_BY_HOTELID,
+} from "./Query";
 
 export const useGetEventsByHotelId = (hotelId) => {
   const { data, error, refetch, loading } = useQuery(GET_EVENTS_BY_HOTELID, {
@@ -19,4 +24,25 @@ export const useGetEventByEventId = (eventId) => {
   );
 
   return { data, error, refetch, loading };
+};
+
+export const useGetEventCount = (eventId) => {
+  const { data, loading, error, refetch } = useQuery(GET_EVENT_BOOKING_COUNT, {
+    variables: { eventId },
+    skip: !eventId,
+  });
+
+  return { data, loading, error, refetch };
+};
+
+export const useGetEventBookingByReservationId = (reservationId) => {
+  const { data, loading, error, refetch } = useQuery(
+    GET_EVENT_BOOKING_BY_RESERVATIONID,
+    {
+      variables: { reservationId },
+      skip: !reservationId,
+    }
+  );
+
+  return { data, loading, error, refetch };
 };

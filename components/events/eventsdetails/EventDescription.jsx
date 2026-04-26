@@ -1,6 +1,7 @@
 import React from "react";
+import { useRouter } from "next/router";
 
-function EventDescription({ description }) {
+function EventDescription({ description, spots, eventCount }) {
   return (
     <div className="flex flex-col gap-2">
       <h3 className="font-semibold font-poppins text-lg">About this event</h3>
@@ -26,9 +27,16 @@ function EventDescription({ description }) {
             <path d="M16 3.13a4 4 0 0 1 0 7.75"></path>
           </svg>
 
-          <p className="font-semibold font-poppins text-sm ">18 attending</p>
+          <p className="font-semibold font-poppins text-sm ">
+            {eventCount?.getEventBookingCount} attending
+          </p>
+
           <p className="text-gray-500 text-sm font-normal ml-auto">
-            7 spots left
+            {spots - eventCount?.getEventBookingCount !== 0 ? (
+              `${parseInt(spots) - eventCount?.getEventBookingCount} spots left`
+            ) : (
+              <span>Sold Out</span>
+            )}
           </p>
         </div>
       </div>

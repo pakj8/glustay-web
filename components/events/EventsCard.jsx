@@ -66,7 +66,7 @@ function EventsCard({ event }) {
 
               <div className="bg-[#ffe700] py-0.5 px-2 w-fit rounded-md ml-auto">
                 <p className="text-xs font-semibold">
-                  {event?.pricePerPerson === "Free"
+                  {event?.pricePerPerson === "0"
                     ? "Free"
                     : `$${event?.pricePerPerson}/Person`}
                 </p>

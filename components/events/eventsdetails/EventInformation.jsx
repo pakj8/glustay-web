@@ -83,7 +83,7 @@ function EventInformation({ name, date, time, location, price, tags }) {
         </svg>
 
         <p className="font-semibold font-poppins text-sm">
-          {price === "Free" ? "Free" : `$${price}/Per Person`}
+          {price === "0" ? "Free" : `$${price}/Per Person`}
         </p>
       </div>
 

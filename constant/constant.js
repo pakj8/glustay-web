@@ -1,5 +1,5 @@
 export function formatDate(d) {
-  if (d) {
+  if (new Date(d)) {
     const date = new Date(d);
     const month = date?.getMonth();
     const monthNames = [
