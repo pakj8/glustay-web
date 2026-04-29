@@ -1,5 +1,6 @@
-import { useMutation } from "@apollo/client";
+import { useMutation, useQuery } from "@apollo/client";
 import { CREATE_BOOKING } from "./Mutation";
+import { GET_EVENT_BOOKING_BY_EVENT_BOOKINGID } from "./Query";
 
 export const useCreateEventBooking = () => {
   const [createEventBooking, { data, loading, error, refetch }] =
@@ -16,4 +17,13 @@ export const useCreateEventBooking = () => {
   };
 
   return [createEventBookingHandler, { data, loading, error, refetch }];
+};
+
+export const useGetEventDetailsByEventBookingId = (eventBookingId) => {
+  const { data } = useQuery(GET_EVENT_BOOKING_BY_EVENT_BOOKINGID, {
+    variables: { eventBookingId },
+    skip: !eventBookingId,
+  });
+
+  return { data };
 };

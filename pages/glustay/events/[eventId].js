@@ -57,14 +57,18 @@ function Index() {
         email: bookingDetails?.email,
         phoneNumber: bookingDetails?.phoneNumber || "",
         numberOfGuests: String(noOfPerson), // ✅ convert to String as per your schema
-        totalAmount: String(event?.pricePerPerson * noOfPerson), // ✅ calculate total
+        totalAmount: String(
+          parseInt(eventDetails?.pricePerPerson || 0) * noOfPerson
+        ),
         reservationId: router?.query?.reservationId,
       };
 
       const response = await createEventBookingHandler(bookingInput);
 
       if (response?.data?.createEventBooking?.eventBookingId) {
-        router.push(`/glustay/${router?.query?.reservationId}`);
+        router.push(
+          `/glustay/events/booking/${response?.data?.createEventBooking?.eventBookingId}`
+        );
       }
     } catch (error) {
       console.error("Event booking error:", error);
