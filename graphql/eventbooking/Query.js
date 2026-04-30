@@ -11,7 +11,10 @@ export const GET_EVENT_BOOKING_BY_EVENT_BOOKINGID = gql`
         time
       }
       bookingId
-      hotelId
+      hotelId {
+        _id
+        hotelName
+      }
       firstName
       lastName
       email

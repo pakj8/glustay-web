@@ -11,7 +11,10 @@ export const CREATE_BOOKING = gql`
         time
       }
       bookingId
-      hotelId
+      hotelId {
+        _id
+        hotelName
+      }
       firstName
       lastName
       email
@@ -20,6 +23,7 @@ export const CREATE_BOOKING = gql`
       totalAmount
       reservationId
       eventBookingId
+      createdAt
     }
   }
 `;
