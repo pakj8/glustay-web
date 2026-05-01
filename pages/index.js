@@ -148,9 +148,9 @@ export default function Home() {
             <div className="space-y-8 mt-8">
               <button
                 disabled={loading}
-                // onClick={() =>
-                //   router.push(`/glustay/${userData?.reservationId}`)
-                // }
+                onClick={() =>
+                  router.push(`/glustay/${userData?.reservationId}`)
+                }
                 // onClick={() => {
                 //   const isVerified =
                 //     localStorage.getItem("authentication") ||
@@ -164,25 +164,25 @@ export default function Home() {
                 //     router.push(`/glustay/${userData?.reservationId}`);
                 //   }
                 // }}
-                onClick={async () => {
-                  const isVerified =
-                    localStorage.getItem("authentication") ||
-                    sessionStorage.getItem("authentication");
+                // onClick={async () => {
+                //   const isVerified =
+                //     localStorage.getItem("authentication") ||
+                //     sessionStorage.getItem("authentication");
 
-                  console.log("isVerified:", isVerified); // ✅ check this
+                //   console.log("isVerified:", isVerified); // ✅ check this
 
-                  if (!isVerified || isVerified !== "verified") {
-                    console.log("Sending OTP to:", userData?.email); // ✅ check email
-                    try {
-                      const response = await sendOtpHandler(userData?.email);
-                      console.log("OTP response:", response); // ✅ check response
-                    } catch (err) {
-                      console.log("OTP error:", err); // ✅ check error
-                    }
-                  } else {
-                    router.push(`/glustay/${userData?.reservationId}`);
-                  }
-                }}
+                //   if (!isVerified || isVerified !== "verified") {
+                //     console.log("Sending OTP to:", userData?.email); // ✅ check email
+                //     try {
+                //       const response = await sendOtpHandler(userData?.email);
+                //       console.log("OTP response:", response); // ✅ check response
+                //     } catch (err) {
+                //       console.log("OTP error:", err); // ✅ check error
+                //     }
+                //   } else {
+                //     router.push(`/glustay/${userData?.reservationId}`);
+                //   }
+                // }}
                 className="w-72 flex disabled:bg-gray-400 justify-center items-center font-poppins text-base font-medium disabled:border-gray-300 border border-[#FFE700] h-14 rounded-md hover:bg-[#FFE700] text-[#000000]"
               >
                 {loading ? "Loading..." : "Yes"}
